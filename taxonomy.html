@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CTMS Taxonomy & Glossary — MD Anderson Oncology</title>
+  <style>
+    :root {
+      --red:    #BF0000;
+      --red-lt: #FFF0F0;
+      --navy:   #1A2E4A;
+      --purple: #6B2D8B;
+      --gray-1: #F8F9FA;
+      --gray-2: #E9ECEF;
+      --gray-3: #6C757D;
+      --gray-4: #343A40;
+      --border: #DEE2E6;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--gray-4);
+      background: var(--gray-1);
+    }
+
+    /* ── Header ── */
+    .site-header {
+      background: var(--red);
+      color: white;
+      padding: 0 2rem;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,.25);
+    }
+    .site-header .logo { font-family: Georgia, serif; font-size: 1.1rem; }
+    .site-header .divider { opacity: .4; }
+    .site-header .subtitle { font-size: .85rem; opacity: .85; }
+
+    /* ── Hero ── */
+    .hero {
+      background: var(--navy);
+      color: white;
+      text-align: center;
+      padding: 3.5rem 2rem 3rem;
+    }
+    .hero .eyebrow {
+      font-size: .7rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      opacity: .5;
+      margin-bottom: .75rem;
+    }
+    .hero h1 {
+      font-family: Georgia, serif;
+      font-size: 2.2rem;
+      font-weight: normal;
+      margin-bottom: .75rem;
+    }
+    .hero p {
+      font-size: .95rem;
+      opacity: .65;
+      max-width: 580px;
+      margin: 0 auto;
+    }
+
+    /* ── Layout ── */
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2.5rem 2rem 5rem;
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+
+    /* ── Sidebar nav ── */
+    .sidebar {
+      position: sticky;
+      top: 72px;
+    }
+    .sidebar-label {
+      font-size: .68rem;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--gray-3);
+      font-weight: 700;
+      margin-bottom: .6rem;
+      padding-left: .5rem;
+    }
+    .nav-list { list-style: none; }
+    .nav-list li a {
+      display: block;
+      padding: .45rem .75rem;
+      border-radius: 5px;
+      font-size: .85rem;
+      text-decoration: none;
+      color: var(--gray-4);
+      transition: background .15s, color .15s;
+      border-left: 3px solid transparent;
+    }
+    .nav-list li a:hover {
+      background: var(--red-lt);
+      color: var(--red);
+      border-left-color: var(--red);
+    }
+    .nav-divider {
+      height: 1px;
+      background: var(--border);
+      margin: .75rem 0;
+    }
+
+    /* ── Main content ── */
+    .main { min-width: 0; }
+
+    section { margin-bottom: 3.5rem; }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      border-bottom: 2px solid var(--red);
+      padding-bottom: .6rem;
+      margin-bottom: 1.5rem;
+    }
+    .section-header h2 {
+      font-family: Georgia, serif;
+      font-size: 1.45rem;
+      font-weight: normal;
+      color: var(--navy);
+    }
+    .section-header .count {
+      font-size: .75rem;
+      color: var(--gray-3);
+    }
+
+    .section-intro {
+      font-size: .92rem;
+      color: var(--gray-3);
+      margin-bottom: 1.5rem;
+      max-width: 680px;
+      line-height: 1.7;
+    }
+
+    /* ── Term cards ── */
+    .term-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1rem;
+    }
+    .term-grid.wide {
+      grid-template-columns: 1fr;
+    }
+
+    .term-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.1rem 1.25rem;
+      transition: box-shadow .15s;
+    }
+    .term-card:hover { box-shadow: 0 2px 10px rgba(0,0,0,.08); }
+    .term-card .term-name {
+      font-family: Georgia, serif;
+      font-size: 1rem;
+      color: var(--navy);
+      margin-bottom: .25rem;
+    }
+    .term-card .term-abbr {
+      display: inline-block;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      background: var(--red-lt);
+      color: var(--red);
+      border-radius: 3px;
+      padding: 1px 6px;
+      margin-bottom: .5rem;
+    }
+    .term-card .term-abbr.purple {
+      background: #F5EEF9;
+      color: var(--purple);
+    }
+    .term-card .term-abbr.navy {
+      background: #EEF1F5;
+      color: var(--navy);
+    }
+    .term-card .term-abbr.green {
+      background: #EDFAF3;
+      color: #1A7A4A;
+    }
+    .term-card p {
+      font-size: .875rem;
+      color: #444;
+      line-height: 1.65;
+    }
+    .term-card .in-app {
+      margin-top: .6rem;
+      padding-top: .6rem;
+      border-top: 1px solid var(--gray-2);
+      font-size: .78rem;
+      color: var(--gray-3);
+    }
+    .term-card .in-app strong { color: var(--red); }
+
+    /* ── Persona cards ── */
+    .persona-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.25rem;
+    }
+    .persona-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.4rem 1.5rem;
+    }
+    .persona-card .persona-header {
+      display: flex;
+      align-items: center;
+      gap: .9rem;
+      margin-bottom: 1rem;
+    }
+    .persona-card .avatar {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1rem;
+      color: white;
+      flex-shrink: 0;
+    }
+    .persona-card .persona-name {
+      font-family: Georgia, serif;
+      font-size: 1.05rem;
+      color: var(--navy);
+    }
+    .persona-card .persona-role {
+      font-size: .8rem;
+      font-weight: 700;
+    }
+    .persona-card h4 {
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--gray-3);
+      margin: .9rem 0 .4rem;
+    }
+    .persona-card ul {
+      list-style: none;
+      padding: 0;
+    }
+    .persona-card ul li {
+      font-size: .875rem;
+      color: #444;
+      padding: .2rem 0;
+      padding-left: 1rem;
+      position: relative;
+    }
+    .persona-card ul li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--gray-3);
+      font-size: .8rem;
+    }
+
+    /* ── Workflow table ── */
+    .flow-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .875rem;
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .flow-table thead tr {
+      background: var(--navy);
+      color: white;
+    }
+    .flow-table thead th {
+      padding: .75rem 1rem;
+      text-align: left;
+      font-size: .75rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-weight: 700;
+    }
+    .flow-table tbody tr:nth-child(even) { background: var(--gray-1); }
+    .flow-table tbody tr:hover { background: var(--red-lt); }
+    .flow-table td {
+      padding: .8rem 1rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      line-height: 1.55;
+      color: #333;
+    }
+    .flow-table td:first-child {
+      font-weight: 700;
+      color: var(--navy);
+      white-space: nowrap;
+      width: 140px;
+    }
+    .flow-table td .screen-tag {
+      display: inline-block;
+      font-size: .7rem;
+      font-weight: 700;
+      border-radius: 3px;
+      padding: 1px 6px;
+      margin-right: .3rem;
+    }
+    .screen-crc { background: #FEE2E2; color: #991B1B; }
+    .screen-irb { background: #F5EEF9; color: var(--purple); }
+
+    /* ── Regulation table ── */
+    .reg-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .875rem;
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .reg-table thead tr {
+      background: var(--red);
+      color: white;
+    }
+    .reg-table thead th {
+      padding: .75rem 1rem;
+      text-align: left;
+      font-size: .75rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-weight: 700;
+    }
+    .reg-table tbody tr:nth-child(even) { background: var(--gray-1); }
+    .reg-table td {
+      padding: .8rem 1rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      line-height: 1.55;
+      color: #333;
+    }
+    .reg-table td:first-child {
+      font-family: Georgia, serif;
+      font-weight: normal;
+      color: var(--red);
+      white-space: nowrap;
+      width: 170px;
+    }
+
+    /* ── Alert box ── */
+    .callout {
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      font-size: .875rem;
+      margin-bottom: 1.25rem;
+      display: flex;
+      gap: .75rem;
+      align-items: flex-start;
+    }
+    .callout.red {
+      background: var(--red-lt);
+      border-left: 4px solid var(--red);
+      color: #7F1D1D;
+    }
+    .callout.navy {
+      background: #EEF1F5;
+      border-left: 4px solid var(--navy);
+      color: var(--navy);
+    }
+    .callout .icon { font-size: 1.1rem; margin-top: .05rem; flex-shrink: 0; }
+
+    /* ── Footer ── */
+    .site-footer {
+      background: var(--navy);
+      color: rgba(255,255,255,.45);
+      text-align: center;
+      padding: 1.5rem;
+      font-size: .8rem;
+    }
+
+    @media (max-width: 760px) {
+      .page { grid-template-columns: 1fr; }
+      .sidebar { position: static; }
+      .term-grid { grid-template-columns: 1fr; }
+      .persona-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <span class="logo">MD Anderson</span>
+  <span class="divider">|</span>
+  <span class="subtitle">Oncology CTMS — Taxonomy &amp; Glossary</span>
+</header>
+
+<div class="hero">
+  <p class="eyebrow">Reference Document · Protocol THN-204 Demo</p>
+  <h1>Industry Taxonomy &amp; Definitions</h1>
+  <p>A reference guide to the roles, processes, and regulations that shape the oncology clinical trial management system. Use this to orient any stakeholder to the domain before reviewing the prototype.</p>
+</div>
+
+<div class="page">
+
+  <!-- Sidebar -->
+  <nav class="sidebar">
+    <p class="sidebar-label">On this page</p>
+    <ul class="nav-list">
+      <li><a href="#overview">What is a CTMS?</a></li>
+      <div class="nav-divider"></div>
+      <li><a href="#personas">Roles &amp; Personas</a></li>
+      <li><a href="#trial-concepts">Trial Concepts</a></li>
+      <li><a href="#documents">Documents &amp; Records</a></li>
+      <li><a href="#safety">Safety Reporting</a></li>
+      <li><a href="#compliance">Compliance &amp; Oversight</a></li>
+      <div class="nav-divider"></div>
+      <li><a href="#regulations">Regulatory Framework</a></li>
+      <li><a href="#systems">Systems &amp; Integrations</a></li>
+      <div class="nav-divider"></div>
+      <li><a href="#screens">App Screens Explained</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main -->
+  <main class="main">
+
+    <!-- ── CTMS Overview ── -->
+    <section id="overview">
+      <div class="section-header">
+        <h2>What is a CTMS?</h2>
+      </div>
+      <p class="section-intro">
+        A <strong>Clinical Trial Management System (CTMS)</strong> is the operational backbone of a research site. It tracks every study participant, visit, document, and regulatory deadline across all active protocols — replacing spreadsheets, email chains, and paper binders with a single auditable record.
+      </p>
+
+      <div class="callout navy">
+        <span class="icon">ℹ</span>
+        <div>
+          <strong>MD Anderson context:</strong> This prototype replaces a legacy <strong>QuickBase</strong> implementation that was maintained by a single SME who has since departed. Leadership is evaluating whether to <em>Build</em> (custom software), <em>Align</em> (configure an enterprise CTMS like Veeva Vault or Medidata Rave), or <em>Backfill</em> (rehire the SME and extend QuickBase). This demo supports the Build scenario.
+        </div>
+      </div>
+
+      <div class="term-grid">
+        <div class="term-card">
+          <div class="term-abbr">CTMS</div>
+          <div class="term-name">Clinical Trial Management System</div>
+          <p>Software that centralizes the operational management of clinical trials — scheduling, participant tracking, regulatory submissions, and compliance monitoring — for a research site or sponsor.</p>
+        </div>
+        <div class="term-card">
+          <div class="term-abbr navy">EDC</div>
+          <div class="term-name">Electronic Data Capture</div>
+          <p>Software used by CRCs to record clinical observations (labs, vitals, AEs) directly into an electronic Case Report Form (eCRF). Examples: Medidata Rave, REDCap. Distinct from a CTMS, though they exchange data.</p>
+        </div>
+        <div class="term-card">
+          <div class="term-abbr navy">EHR / EMR</div>
+          <div class="term-name">Electronic Health Record / Medical Record</div>
+          <p>The patient's clinical health record maintained by the hospital. At MD Anderson, this is <strong>Epic</strong>. The CTMS pulls lab values, vitals, and medication lists from Epic to avoid double-entry.</p>
+          <div class="in-app"><strong>In app:</strong> Visit Form shows lab &amp; vitals imported from Epic, timestamped May 19, 2026 · 07:42 AM.</div>
+        </div>
+        <div class="term-card">
+          <div class="term-abbr navy">eCRF</div>
+          <div class="term-name">Electronic Case Report Form</div>
+          <p>The structured form used to record all protocol-required data points for a single patient visit. Every field is audited. Corrections require a reason and audit trail.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Roles ── -->
+    <section id="personas">
+      <div class="section-header">
+        <h2>Roles &amp; Personas</h2>
+        <span class="count">7 roles</span>
+      </div>
+      <p class="section-intro">
+        Clinical trials involve a tightly regulated hierarchy of roles with distinct responsibilities and system access. The prototype focuses on two primary users, but all roles interact with the CTMS data.
+      </p>
+
+      <div class="persona-grid">
+
+        <div class="persona-card">
+          <div class="persona-header">
+            <div class="avatar" style="background: #BF0000;">M</div>
+            <div>
+              <div class="persona-name">Clinical Research Coordinator</div>
+              <div class="persona-role" style="color: #BF0000;">CRC &nbsp;·&nbsp; Primary User in Demo</div>
+            </div>
+          </div>
+          <p style="font-size:.875rem;color:#444;line-height:1.6">The day-to-day operator of the trial at the site. Responsible for every patient-facing activity and the paper trail behind it.</p>
+          <h4>Core responsibilities</h4>
+          <ul>
+            <li>Schedule and conduct patient visits</li>
+            <li>Complete eCRFs for each visit</li>
+            <li>Confirm lab values imported from Epic</li>
+            <li>Log adverse events and classify severity</li>
+            <li>Obtain informed consent and re-consent after amendments</li>
+            <li>Acknowledge protocol amendments</li>
+            <li>Respond to sponsor/IRB queries</li>
+          </ul>
+          <h4>Pain points the CTMS solves</h4>
+          <ul>
+            <li>Re-keying Epic data into eCRFs</li>
+            <li>Missing amendment acknowledgment deadlines</li>
+            <li>Manually calculating SAE FDA deadlines</li>
+          </ul>
+        </div>
+
+        <div class="persona-card">
+          <div class="persona-header">
+            <div class="avatar" style="background: #6B2D8B;">D</div>
+            <div>
+              <div class="persona-name">IRB Administrator</div>
+              <div class="persona-role" style="color: #6B2D8B;">IRB Admin &nbsp;·&nbsp; Primary User in Demo</div>
+            </div>
+          </div>
+          <p style="font-size:.875rem;color:#444;line-height:1.6">The compliance watchdog at the site. Ensures the IRB's regulatory requirements are met by all study staff and escalates failures.</p>
+          <h4>Core responsibilities</h4>
+          <ul>
+            <li>Monitor amendment acknowledgment compliance</li>
+            <li>Track SAE reporting deadlines</li>
+            <li>Submit annual IRB renewals and amendments</li>
+            <li>Ensure all CRCs have completed required training</li>
+            <li>Maintain the regulatory binder</li>
+          </ul>
+          <h4>Pain points the CTMS solves</h4>
+          <ul>
+            <li>Hunting down acknowledgment status via email</li>
+            <li>Manually tracking FDA reporting deadlines</li>
+            <li>Generating compliance reports for audits</li>
+          </ul>
+        </div>
+
+        <div class="persona-card">
+          <div class="persona-header">
+            <div class="avatar" style="background: #1A2E4A;">PI</div>
+            <div>
+              <div class="persona-name">Principal Investigator</div>
+              <div class="persona-role" style="color: #1A2E4A;">PI &nbsp;·&nbsp; Future User (Screen 6)</div>
+            </div>
+          </div>
+          <p style="font-size:.875rem;color:#444;line-height:1.6">The physician-researcher legally responsible for the conduct of the trial at the site. Delegates operational work to the CRC but retains full accountability.</p>
+          <h4>Core responsibilities</h4>
+          <ul>
+            <li>Sign off on protocol deviations</li>
+            <li>Review and co-sign SAE reports</li>
+            <li>Approve enrollment decisions</li>
+            <li>Oversee CRC training and delegation</li>
+          </ul>
+        </div>
+
+        <div class="persona-card">
+          <div class="persona-header">
+            <div class="avatar" style="background: #374151;">S</div>
+            <div>
+              <div class="persona-name">Sponsor / CRO Monitor</div>
+              <div class="persona-role" style="color: #374151;">Sponsor Monitor</div>
+            </div>
+          </div>
+          <p style="font-size:.875rem;color:#444;line-height:1.6">The pharmaceutical company (or its Contract Research Organization) representative who visits the site periodically to verify data quality and protocol compliance.</p>
+          <h4>Core responsibilities</h4>
+          <ul>
+            <li>Source data verification (SDV) — comparing eCRF to Epic</li>
+            <li>Raising data queries for inconsistencies</li>
+            <li>Issuing protocol deviation findings</li>
+            <li>Reviewing the regulatory binder</li>
+          </ul>
+        </div>
+
+        <div class="persona-card">
+          <div class="persona-header">
+            <div class="avatar" style="background: #1A7A4A;">R</div>
+            <div>
+              <div class="persona-name">Research Pharmacist</div>
+              <div class="persona-role" style="color: #1A7A4A;">Pharmacy</div>
+            </div>
+          </div>
+          <p style="font-size:.875rem;color:#444;line-height:1.6">Manages investigational drug accountability — receiving, dispensing, and documenting the chain of custody for every dose of the study drug.</p>
+          <h4>Core responsibilities</h4>
+          <ul>
+            <li>Investigational drug dispensing records</li>
+            <li>Temperature and storage logs</li>
+            <li>Drug accountability reconciliation</li>
+          </ul>
+        </div>
+
+        <div class="persona-card">
+          <div class="persona-header">
+            <div class="avatar" style="background: #92400E;">B</div>
+            <div>
+              <div class="persona-name">Biostatistician / Data Manager</div>
+              <div class="persona-role" style="color: #92400E;">Data Management</div>
+            </div>
+          </div>
+          <p style="font-size:.875rem;color:#444;line-height:1.6">Manages the flow of data from the eCRF into the sponsor's database. Writes and responds to data queries, and locks the database at study end.</p>
+          <h4>Core responsibilities</h4>
+          <ul>
+            <li>Query management (raise, respond, resolve)</li>
+            <li>Database lock and clean file preparation</li>
+            <li>Protocol deviation tracking</li>
+          </ul>
+        </div>
+
+        <div class="persona-card">
+          <div class="persona-header">
+            <div class="avatar" style="background: #374151;">P</div>
+            <div>
+              <div class="persona-name">Patient / Study Participant</div>
+              <div class="persona-role" style="color: #374151;">Subject</div>
+            </div>
+          </div>
+          <p style="font-size:.875rem;color:#444;line-height:1.6">The enrolled patient receiving the investigational treatment. Identified in the system by a blinded Subject ID (not name) to protect privacy.</p>
+          <h4>Key facts</h4>
+          <ul>
+            <li>Identified by Subject ID (e.g., Subject 1042), not name</li>
+            <li>Must provide written informed consent before any study procedures</li>
+            <li>Must re-consent if the ICF is updated via protocol amendment</li>
+          </ul>
+          <div style="margin-top:.6rem;padding:.6rem;background:var(--gray-1);border-radius:6px;font-size:.78rem;color:var(--gray-3)">
+            <strong style="color:var(--red)">In app:</strong> Patient R.C. · Subject 1042 · MRN-88421 on Protocol THN-204
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── Trial Concepts ── -->
+    <section id="trial-concepts">
+      <div class="section-header">
+        <h2>Clinical Trial Concepts</h2>
+        <span class="count">12 terms</span>
+      </div>
+      <p class="section-intro">
+        The operational vocabulary used daily by research staff — from the protocol that governs every decision to the visit windows that define acceptable timing.
+      </p>
+
+      <div class="term-grid">
+        <div class="term-card">
+          <div class="term-abbr">Protocol</div>
+          <div class="term-name">Study Protocol</div>
+          <p>The master document that defines every aspect of a clinical trial: the scientific hypothesis, eligibility criteria, treatment plan, visit schedule, required assessments, and statistical analysis plan. All site activities must follow it exactly.</p>
+          <div class="in-app"><strong>In app:</strong> Protocol THN-204 governs the demo scenario.</div>
+        </div>
+
+        <div class="term-card">
+          <div class="term-abbr">Amendment</div>
+          <div class="term-name">Protocol Amendment</div>
+          <p>A formal change to an approved protocol. Requires IRB re-approval before implementation. CRCs must acknowledge they've read it; enrolled patients may require re-consent depending on the nature of the change.</p>
+          <div class="in-app"><strong>In app:</strong> Amendment 3 approved May 16, 2026 — updated the ICF from v1.2 to v1.3 with revised risk language.</div>
+        </div>
+
+        <div class="term-card">
+          <div class="term-abbr">Visit Window</div>
+          <div class="term-name">Protocol Visit Window</div>
+          <p>The allowable date range within which a scheduled visit can occur. Defined in the protocol (e.g., ±3 days). Visits outside the window are protocol deviations that must be reported.</p>
+          <div class="in-app"><strong>In app:</strong> Cycle 2 Day 1 window is May 17–21, 2026 (visit date: May 19).</div>
+        </div>
+
+        <div class="term-card">
+          <div class="term-abbr navy">Cycle</div>
+          <div class="term-name">Treatment Cycle</div>
+          <p>A repeating unit of the treatment schedule. Oncology trials commonly use 21- or 28-day cycles. "Cycle 2 Day 1" means the first day of the second cycle of treatment.</p>
+        </div>
+
+        <div class="term-card">
+          <div class="term-abbr navy">Screening</div>
+          <div class="term-name">Screening Visit</div>
+          <p>The initial visit where eligibility is assessed. Labs, imaging, and history are collected to confirm the patient meets inclusion/exclusion criteria before enrollment.</p>
+          <div class="in-app"><strong>In app:</strong> Patient J.B. (Subject 1029, ONC-118) has a Screening visit at 1:00 PM in the Work Queue.</div>
+        </div>
+
+        <div class="term-card">
+          <div class="term-abbr">Enrollment</div>
+          <div class="term-name">Study Enrollment</div>
+          <p>The act of formally entering a patient into a trial after confirming eligibility and obtaining informed consent. Enrollment metrics are tracked by the sponsor and IRB.</p>
+        </div>
+
+        <div class="term-card">
+          <div class="term-abbr">ANC</div>
+          <div class="term-name">Absolute Neutrophil Count</div>
+          <p>A key lab value in oncology trials. Low ANC (neutropenia) may require dose delay or reduction per protocol. Normal range: 1.8–7.5 × 10⁹/L. Often checked at every cycle.</p>
+          <div class="in-app"><strong>In app:</strong> R.C.'s ANC is 2.1 × 10⁹/L (within normal range) — imported from Epic.</div>
+        </div>
+
+        <div class="term-card">
+          <div class="term-abbr">ALT / AST</div>
+          <div class="term-name">Liver Function Tests</div>
+          <p>Alanine aminotransferase (ALT) and aspartate aminotransferase (AST) are liver enzymes monitored for hepatotoxicity — a common concern with investigational oncology drugs.</p>
+          <div class="in-app"><strong>In app:</strong> ALT 28 U/L, AST 31 U/L — both within normal range.</div>
+        </div>
+
+        <div class="term-card">
+          <div class="term-abbr navy">PRN</div>
+          <div class="term-name">Pro Re Nata (As Needed)</div>
+          <p>Medication dosing frequency meaning "as needed." A common medication instruction in eCRFs. Concomitant medications must be listed to assess drug interactions with the investigational product.</p>
+          <div class="in-app"><strong>In app:</strong> Ondansetron 8mg PRN nausea — a concomitant medication for Subject 1042.</div>
+        </div>
+
+        <div class="term-card">
+          <div class="term-abbr navy">SDV</div>
+          <div class="term-name">Source Data Verification</div>
+          <p>The process by which a sponsor monitor confirms that data entered in the eCRF matches the original source (usually the EHR). Discrepancies become data queries.</p>
+        </div>
+
+        <div class="term-card">
+          <div class="term-abbr">Query</div>
+          <div class="term-name">Data Query</div>
+          <p>A formal question raised by the sponsor's data management team or monitor when eCRF data is missing, inconsistent, or doesn't match source. CRCs must respond within a defined timeframe.</p>
+          <div class="in-app"><strong>In app:</strong> Work Queue shows 2 queries due with 3 days remaining.</div>
+        </div>
+
+        <div class="term-card">
+          <div class="term-abbr">Deviation</div>
+          <div class="term-name">Protocol Deviation</div>
+          <p>Any unintended departure from the approved protocol. Must be documented, reported to the IRB (if significant), and assessed for impact on patient safety or data integrity. Repeated deviations trigger FDA scrutiny.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Documents ── -->
+    <section id="documents">
+      <div class="section-header">
+        <h2>Documents &amp; Records</h2>
+        <span class="count">6 terms</span>
+      </div>
+
+      <div class="term-grid">
+        <div class="term-card">
+          <div class="term-abbr">ICF</div>
+          <div class="term-name">Informed Consent Form</div>
+          <p>The legal and ethical document a patient signs before joining a trial. Must describe the study purpose, procedures, risks, benefits, and alternatives in plain language. Versioned — any material change requires a new version and re-consent.</p>
+          <div class="in-app"><strong>In app:</strong> Amendment 3 updated the ICF from v1.2 to v1.3. Enrolled patients must be re-consented to the new version.</div>
+        </div>
+
+        <div class="term-card">
+          <div class="term-abbr">Reg Binder</div>
+          <div class="term-name">Regulatory Binder</div>
+          <p>The complete paper (or electronic) archive of all trial documentation: IRB approvals, amendments, staff training records, delegation logs, ICF versions, and correspondence. The first thing auditors request.</p>
+        </div>
+
+        <div class="term-card">
+          <div class="term-abbr">DL</div>
+          <div class="term-name">Delegation Log</div>
+          <p>A record of every task the PI has delegated to study staff, along with their qualifications. Only staff on the delegation log may perform the delegated tasks — a common audit finding when outdated.</p>
+        </div>
+
+        <div class="term-card">
+          <div class="term-abbr navy">ClinicalTrials.gov</div>
+          <div class="term-name">Federal Trial Registry</div>
+          <p>The FDA-mandated public registry where all trials must be registered and results reported. Late registration and late results reporting carry civil monetary penalties under FDAAA 801.</p>
+        </div>
+
+        <div class="term-card">
+          <div class="term-abbr navy">IND</div>
+          <div class="term-name">Investigational New Drug Application</div>
+          <p>The FDA application that permits shipment of an investigational drug across state lines for use in a clinical trial. The sponsor holds the IND; sites operate under it.</p>
+        </div>
+
+        <div class="term-card">
+          <div class="term-abbr navy">Audit Trail</div>
+          <div class="term-name">Electronic Audit Trail</div>
+          <p>The 21 CFR Part 11-required record of every create, read, update, and delete action in an electronic system — who did it, when, and what changed. Non-negotiable for FDA-regulated data.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Safety ── -->
+    <section id="safety">
+      <div class="section-header">
+        <h2>Safety Reporting</h2>
+        <span class="count">8 terms</span>
+      </div>
+      <p class="section-intro">
+        Safety reporting is the highest-stakes workflow in a CTMS. Missed deadlines can result in FDA Warning Letters, clinical holds, and protocol suspension. The system automates classification and deadline calculation.
+      </p>
+
+      <div class="callout red">
+        <span class="icon">⚠</span>
+        <div>
+          <strong>Key rule:</strong> Under 21 CFR 312.32, any adverse event that is <strong>serious, unexpected, and potentially related</strong> to the investigational drug must be reported to the FDA within <strong>7 calendar days</strong> (if life-threatening) or <strong>15 calendar days</strong> (all other SAEs). The clock starts on the day the site becomes aware.
+        </div>
+      </div>
+
+      <div class="term-grid">
+        <div class="term-card">
+          <div class="term-abbr">AE</div>
+          <div class="term-name">Adverse Event</div>
+          <p>Any untoward medical occurrence in a patient participating in a clinical trial, regardless of whether it's related to the study drug. All AEs must be documented in the eCRF with grade, dates, and outcome.</p>
+        </div>
+
+        <div class="term-card">
+          <div class="term-abbr red" style="background:#FEE2E2;color:#991B1B;">SAE</div>
+          <div class="term-name">Serious Adverse Event</div>
+          <p>An AE that results in death, is life-threatening, requires inpatient hospitalization, causes significant disability, or is a congenital anomaly. SAEs trigger expedited FDA reporting obligations under 21 CFR 312.32.</p>
+          <div class="in-app"><strong>In app:</strong> Grade ≥3 on the AE logging screen triggers SAE classification and automatically calculates the 7-day FDA deadline.</div>
+        </div>
+
+        <div class="term-card">
+          <div class="term-abbr">CTCAE</div>
+          <div class="term-name">Common Terminology Criteria for Adverse Events</div>
+          <p>The NCI's standardized grading scale for adverse events, used universally in oncology trials. Grades 1–5 correspond to mild, moderate, severe, life-threatening, and death.</p>
+          <div class="in-app"><strong>In app:</strong> The AE Grade dropdown uses CTCAE language: Grade 1 Mild → Grade 5 Death. Grade ≥3 = SAE.</div>
+        </div>
+
+        <div class="term-card">
+          <div class="term-abbr">Grade 1</div>
+          <div class="term-name">Mild Adverse Event</div>
+          <p>Asymptomatic or mild symptoms; clinical or diagnostic observations only; no intervention required. Standard eCRF documentation within 7 days of awareness.</p>
+        </div>
+
+        <div class="term-card">
+          <div class="term-abbr">Grade 2</div>
+          <div class="term-name">Moderate Adverse Event</div>
+          <p>Minimal, local or non-invasive intervention indicated; limiting age-appropriate activities of daily life. Standard documentation required, no expedited FDA reporting.</p>
+        </div>
+
+        <div class="term-card">
+          <div class="term-abbr red" style="background:#FEE2E2;color:#991B1B;">Grade 3</div>
+          <div class="term-name">Severe Adverse Event → SAE threshold</div>
+          <p>Severe or medically significant but not immediately life-threatening. Hospitalization or prolongation of hospitalization indicated. Meets SAE criteria — expedited reporting required.</p>
+        </div>
+
+        <div class="term-card">
+          <div class="term-abbr red" style="background:#FEE2E2;color:#991B1B;">Grade 4</div>
+          <div class="term-name">Life-Threatening Adverse Event</div>
+          <p>Life-threatening consequences; urgent intervention indicated. FDA 7-day expedited report required for unexpected events potentially related to the study drug.</p>
+        </div>
+
+        <div class="term-card">
+          <div class="term-abbr red" style="background:#FEE2E2;color:#991B1B;">Grade 5</div>
+          <div class="term-name">Fatal Adverse Event</div>
+          <p>Death related to the adverse event. Triggers immediate IRB and FDA notification. The CIOMS I form is typically used for international reporting.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Compliance ── -->
+    <section id="compliance">
+      <div class="section-header">
+        <h2>Compliance &amp; Oversight</h2>
+        <span class="count">6 terms</span>
+      </div>
+
+      <div class="term-grid">
+        <div class="term-card">
+          <div class="term-abbr purple">IRB</div>
+          <div class="term-name">Institutional Review Board</div>
+          <p>The independent ethics committee required by federal law to review and approve clinical research involving human subjects. At academic medical centers like MD Anderson, the IRB is an internal committee. Reviews ongoing studies annually.</p>
+          <div class="in-app"><strong>In app:</strong> IRB Admin David K. monitors compliance across all active protocols from the Compliance Dashboard.</div>
+        </div>
+
+        <div class="term-card">
+          <div class="term-abbr purple">Acknowledgment</div>
+          <div class="term-name">Amendment Acknowledgment</div>
+          <p>The digital signature confirming a CRC has read and understood a protocol amendment. The IRB tracks this per staff member — unacknowledged amendments are a compliance finding.</p>
+          <div class="in-app"><strong>In app:</strong> Compliance Dashboard shows Maria R. and James T. acknowledged; Sandra L. is pending with a reminder due.</div>
+        </div>
+
+        <div class="term-card">
+          <div class="term-abbr">GCP</div>
+          <div class="term-name">Good Clinical Practice</div>
+          <p>The international ethical and scientific quality standard for designing, conducting, recording, and reporting clinical trials involving humans. Codified in ICH E6 guidelines. Compliance with GCP is required for FDA-regulated trials.</p>
+        </div>
+
+        <div class="term-card">
+          <div class="term-abbr">FDA Audit</div>
+          <div class="term-name">Bioresearch Monitoring (BIMO) Inspection</div>
+          <p>An FDA inspection of a clinical trial site reviewing data integrity, protocol compliance, and informed consent practices. Investigators are selected based on SAE reports, enrollment rates, or random selection.</p>
+        </div>
+
+        <div class="term-card">
+          <div class="term-abbr green">Annual Review</div>
+          <div class="term-name">IRB Continuing Review / Annual Renewal</div>
+          <p>The annual submission required to keep an approved protocol active. Includes an enrollment update, adverse event summary, and protocol changes. Missed renewals result in a study suspension.</p>
+        </div>
+
+        <div class="term-card">
+          <div class="term-abbr">Sponsor Audit</div>
+          <div class="term-name">Sponsor Quality Assurance Audit</div>
+          <p>A deeper review by the pharmaceutical sponsor's QA team (distinct from monitoring visits) to confirm GCP compliance before regulatory submission. Often precedes an NDA/BLA filing.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Regulations ── -->
+    <section id="regulations">
+      <div class="section-header">
+        <h2>Regulatory Framework</h2>
+        <span class="count">8 citations</span>
+      </div>
+      <p class="section-intro">
+        The laws and regulations that the CTMS must help sites comply with. Each shapes system requirements.
+      </p>
+
+      <table class="reg-table">
+        <thead>
+          <tr>
+            <th>Regulation</th>
+            <th>What it governs</th>
+            <th>CTMS implication</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>21 CFR Part 312</td>
+            <td>IND regulations — rules for investigational drug trials. Part 312.32 specifically governs IND safety reporting (SAE obligations).</td>
+            <td>Drives the 7-day and 15-day SAE reporting deadlines and the "serious/unexpected/related" classification logic.</td>
+          </tr>
+          <tr>
+            <td>21 CFR Part 11</td>
+            <td>Electronic records and electronic signatures. Defines when an e-signature is legally equivalent to a wet signature.</td>
+            <td>Every acknowledgment, form submission, and audit trail entry must meet Part 11 requirements.</td>
+          </tr>
+          <tr>
+            <td>21 CFR Part 50</td>
+            <td>Protection of human subjects — informed consent requirements.</td>
+            <td>ICF versioning, re-consent triggers, and documentation of consent must be enforced by the CTMS.</td>
+          </tr>
+          <tr>
+            <td>21 CFR Part 56</td>
+            <td>IRB regulations — composition, operations, and review procedures.</td>
+            <td>Amendment approval dates, IRB correspondence, and continuing review deadlines must be tracked.</td>
+          </tr>
+          <tr>
+            <td>45 CFR Part 46</td>
+            <td>The "Common Rule" — federal human subjects protections for HHS-funded research. Harmonized with FDA rules in 2018.</td>
+            <td>Applies to federally funded trials at MD Anderson alongside FDA regs.</td>
+          </tr>
+          <tr>
+            <td>HIPAA / HITECH</td>
+            <td>Patient privacy and the security of protected health information (PHI). Trials require a HIPAA authorization or waiver alongside informed consent.</td>
+            <td>Subject IDs (not names) must be used in eCRFs; PHI must be encrypted at rest and in transit.</td>
+          </tr>
+          <tr>
+            <td>ICH E6 (R2)</td>
+            <td>International Council for Harmonisation Good Clinical Practice guideline — the global GCP standard accepted by FDA, EMA, and PMDA.</td>
+            <td>Defines the audit trail, delegation log, and data integrity requirements the CTMS must support.</td>
+          </tr>
+          <tr>
+            <td>FDAAA 801</td>
+            <td>FDA Amendments Act — mandates ClinicalTrials.gov registration and results reporting within 12 months of primary completion.</td>
+            <td>Regulatory Timeline screen (Screen 6) would track these submission deadlines.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ── Systems ── -->
+    <section id="systems">
+      <div class="section-header">
+        <h2>Systems &amp; Integrations</h2>
+        <span class="count">5 systems</span>
+      </div>
+
+      <div class="term-grid">
+        <div class="term-card">
+          <div class="term-abbr navy">Epic</div>
+          <div class="term-name">Epic EHR (Source of Truth for Clinical Data)</div>
+          <p>MD Anderson's electronic health record. The authoritative source for lab results, vitals, and medication lists. The CTMS pulls a timestamped snapshot from Epic at visit time to pre-populate the visit form — eliminating re-entry and reducing transcription errors.</p>
+          <div class="in-app"><strong>In app:</strong> Labs and vitals on the Visit Form show "Imported from Epic · May 19, 2026 · 07:42 AM."</div>
+        </div>
+
+        <div class="term-card">
+          <div class="term-abbr navy">QuickBase</div>
+          <div class="term-name">Legacy CTMS (Being Replaced)</div>
+          <p>A low-code database platform previously used as MD Anderson's CTMS. Maintained by a single SME. After that person's departure, the system is unsupported — driving the Build / Align / Backfill evaluation.</p>
+        </div>
+
+        <div class="term-card">
+          <div class="term-abbr navy">Medidata Rave</div>
+          <div class="term-name">Industry-Leading EDC/CTMS Platform</div>
+          <p>The dominant enterprise EDC and CTMS in industry-sponsored oncology trials. Used by most large pharmaceutical sponsors. One of the "Align" options MD Anderson is evaluating as a QuickBase replacement.</p>
+        </div>
+
+        <div class="term-card">
+          <div class="term-abbr navy">Veeva Vault</div>
+          <div class="term-name">Regulatory Document Management</div>
+          <p>A cloud-based platform for managing regulatory documents, eTMF (Trial Master File), and clinical operations. Commonly used for amendment tracking and IRB submission management.</p>
+        </div>
+
+        <div class="term-card">
+          <div class="term-abbr green">REDCap</div>
+          <div class="term-name">Research Electronic Data Capture</div>
+          <p>An academic EDC platform developed at Vanderbilt, widely used at NCI-designated cancer centers for investigator-initiated trials. Free to academic institutions. An alternative to Medidata for smaller studies.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── App Screens ── -->
+    <section id="screens">
+      <div class="section-header">
+        <h2>App Screens Explained</h2>
+        <span class="count">5 screens built · 1 deferred</span>
+      </div>
+      <p class="section-intro">
+        Each screen maps to a specific workflow moment in the trial. This table shows what domain problem each screen solves and which persona uses it.
+      </p>
+
+      <table class="flow-table">
+        <thead>
+          <tr>
+            <th>Screen</th>
+            <th>Persona</th>
+            <th>Domain problem it solves</th>
+            <th>Key terms in play</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Persona Select</td>
+            <td>—</td>
+            <td>Demo entry point. Sets the narrative: "Monday morning on Protocol THN-204." Primes stakeholders on the two primary users before the walkthrough begins.</td>
+            <td>CRC, IRB Admin, Protocol</td>
+          </tr>
+          <tr>
+            <td>Work Queue</td>
+            <td><span class="screen-tag screen-crc">CRC</span></td>
+            <td>Replaces morning email review. CRC sees today's visit schedule, pending queries, and any open compliance actions (amendment acknowledgment banner) in one view.</td>
+            <td>Work Queue, Visit, Amendment, Query, Protocol</td>
+          </tr>
+          <tr>
+            <td>Amendment Detail</td>
+            <td><span class="screen-tag screen-crc">CRC</span></td>
+            <td>Replaces the paper binder amendment tracker. CRC reads the amendment summary, sees the ICF version change, and digitally acknowledges. The IRB Admin is notified automatically.</td>
+            <td>Amendment, ICF, Acknowledgment, 21 CFR Part 56</td>
+          </tr>
+          <tr>
+            <td>Visit Form</td>
+            <td><span class="screen-tag screen-crc">CRC</span></td>
+            <td>Eliminates dual-entry of Epic data. Labs, vitals, and meds are pre-populated from the EHR with a timestamp. CRC confirms each value rather than typing it. Adverse events are logged from here.</td>
+            <td>eCRF, Epic, SDV, ANC, CTCAE, Visit Window, ICF re-consent</td>
+          </tr>
+          <tr>
+            <td>SAE Logging</td>
+            <td><span class="screen-tag screen-crc">CRC</span></td>
+            <td>Automates two manual, error-prone steps: (1) classifying whether an AE is an SAE based on CTCAE grade, and (2) calculating the FDA reporting deadline. Currently done on paper with a calendar.</td>
+            <td>AE, SAE, CTCAE Grade, 21 CFR 312.32, 7-day report, Relatedness</td>
+          </tr>
+          <tr>
+            <td>Compliance Dashboard</td>
+            <td><span class="screen-tag screen-irb">IRB Admin</span></td>
+            <td>Replaces the IRB Admin's email inbox as the primary oversight tool. Shows which CRCs have acknowledged amendments, surfaces SAE deadline alerts, and enables one-click reminders.</td>
+            <td>Acknowledgment compliance, SAE deadline, IRB oversight, Amendment</td>
+          </tr>
+          <tr>
+            <td style="color:var(--gray-3);font-weight:normal;font-style:italic">Regulatory Timeline <br><small>(deferred)</small></td>
+            <td><span class="screen-tag screen-irb">IRB Admin</span> <span class="screen-tag" style="background:#EEF1F5;color:var(--navy)">PI</span></td>
+            <td>Would consolidate all regulatory deadlines: annual IRB review, ClinicalTrials.gov results reporting, sponsor submission dates. Replaces a manual spreadsheet maintained by the IRB office.</td>
+            <td>Annual Review, FDAAA 801, ClinicalTrials.gov, IND, Regulatory Binder</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+  </main>
+</div>
+
+<footer class="site-footer">
+  MD Anderson Cancer Center · Oncology CTMS Prototype · Protocol THN-204 · Reference document for stakeholder review
+</footer>
+
+</body>
+</html>

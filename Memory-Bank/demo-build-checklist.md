@@ -1,15 +1,47 @@
 # Demo Build Checklist — Oncology CTMS Prototype
 
+## 🎤 Demo Introduction (Person A)
+
+
+
+**Person A:**
+Welcome, everyone! Today, we invite you to imagine a better way to run clinical trials. Our Clinical Trials Management System (CTMS) prototype is designed to solve the real pain points that research teams face every day—making trials more efficient, compliant, and patient-centered.
+
+**What is a CTMS?**
+A CTMS is the digital backbone for clinical research operations. It brings together scheduling, data capture, regulatory tracking, and compliance into a single, intuitive platform—replacing spreadsheets, emails, and manual trackers.
+
+**Who are our heroes?**
+- **Maria, the Clinical Research Coordinator (CRC):** She’s the frontline of patient care and data integrity, juggling visits, forms, and compliance.
+- **David, the IRB Administrator:** He ensures every protocol change and safety event is tracked, reported, and audit-ready.
+
+**Today’s scenario:**
+It’s Monday morning on Protocol THN-204, an oncology trial. We’ll follow Maria and David as they navigate a typical—but critical—day, and see how the CTMS transforms their experience.
+
+As we move through the demo, notice how each screen tells a piece of their story—solving real problems and creating new value for every stakeholder.
+
+**Presenters:**
+- Person A — Introduction
+- Person B — CRC (Maria, Screens 1-2)
+- Person C — CRC (Maria, Screens 3-4)
+- Person D — IRB Admin (David, Screens 5-6)
+
+---
+
 **Scenario:** Monday Morning on Protocol THN-204  
 **Personas:** CRC (Maria) · IRB Admin (David)  
 **Target:** 6 screens · ~7 min demo
 
 ---
 
-## 📋 CRC — Maria (4 screens)
+---
+
+## 📋 Maria’s Story — The CRC (Screens 1-2: Person B, Screens 3-4: Person C)
 
 ### Screen 1 — Work Queue (CRC Home)
+
+**Person B as Maria:**
 *Act 1, Scene 1 · Maria opens the system*
+Maria starts her day with clarity. The CTMS work queue is her single source of truth—no more hunting for emails or sticky notes. She sees exactly what’s urgent, what’s new, and what’s next.
 
 - [ ] Dated visit task list — patient name, protocol ID, visit name (e.g. "Cycle 2 Day 1"), time
 - [ ] Amendment notification banner — "Protocol THN-204 amended. Acknowledgment required." with a clear CTA
@@ -21,7 +53,10 @@
 ---
 
 ### Screen 2 — Amendment Detail + Acknowledge
+
+**Person B as Maria:**
 *Act 1, Scene 2 · Maria reviews and acknowledges the amendment*
+With a single click, Maria acknowledges a protocol amendment. The system records her action instantly—no more compliance gaps or manual follow-up. The CTMS closes the loop between research and regulatory teams.
 
 - [ ] Protocol name, amendment number, and approval date
 - [ ] Plain-language summary of what changed (one to two sentences about the ICF update)
@@ -36,7 +71,10 @@
 ---
 
 ### Screen 3 — Visit Form (Pre-populated from Epic)
+
+**Person C as Maria:**
 *Act 1, Scene 3 · Maria opens the Cycle 2 Day 1 visit for Patient R.C.*
+Maria prepares for a patient visit. All labs and vitals are pre-filled from Epic—she reviews, confirms, and moves forward. The CTMS eliminates double data entry and lets her focus on the patient.
 
 - [ ] Visit header — patient identifier (initials + subject ID), protocol, cycle/day, visit window dates
 - [ ] Lab values section — ANC, creatinine, LFTs pre-filled with values and an "Imported from Epic · [timestamp]" source label
@@ -52,7 +90,10 @@
 ---
 
 ### Screen 4 — SAE Logging Form + Auto-Calculated Deadline
+
+**Person C as Maria:**
 *Act 1, Scene 4 · Patient reports new symptom; Maria logs a grade 3 adverse event*
+When a patient reports a new symptom, Maria logs a serious adverse event. The CTMS calculates the reporting deadline and notifies the right people—compliance is built in, not bolted on. Maria can trust that nothing will fall through the cracks.
 
 - [ ] Event date field — drives deadline calculation
 - [ ] Grade selector (1–5) — selecting Grade 3+ triggers SAE classification logic
@@ -67,10 +108,21 @@
 
 ---
 
-## ⚖️ IRB Admin — David (2 screens)
+---
+
+
+**Person D:**
+Now, let’s see how the CTMS empowers David, the IRB Admin, to stay on top of compliance and safety—without chasing down information or assembling binders.
+
+---
+
+## ⚖️ David’s Story — The IRB Admin (Person D, 2 screens)
 
 ### Screen 5 — Compliance Dashboard (IRB Admin Home)
+
+**Person D as David:**
 *Act 2, Scene 5 · David opens his dashboard after the amendment and SAE*
+David’s dashboard gives him instant visibility. He knows which CRCs have acknowledged the amendment and sees urgent safety events at a glance. The CTMS does the tracking—David does the oversight.
 
 - [ ] Amendment acknowledgment tracker for THN-204 — list of assigned CRCs with acknowledged / pending status and timestamp for those who have confirmed
 - [ ] One CRC shown as pending — with "Reminder queued" label to show the system is following up automatically
@@ -84,7 +136,10 @@
 ---
 
 ### Screen 6 — Protocol Regulatory Timeline (THN-204)
+
+**Person D as David:**
 *Act 2, Scene 6 · David clicks into the full regulatory history*
+With a click, David reviews the full regulatory timeline for Protocol THN-204. Every amendment, consent, and safety event is logged—ready for any audit or inspection, with zero manual binder assembly. The CTMS makes the invisible, visible.
 
 - [ ] Chronological event timeline — vertical list, most recent at top
 - [ ] Event types: protocol activation, amendment approvals, ICF version changes, patient consent logs (anonymized), today's SAE
@@ -95,6 +150,15 @@
 **Wow moment:** If an FDA inspector walked in right now, David pulls this screen. The complete regulatory record assembled itself — no binder required.
 
 > **Today:** David manually assembles a binder from PDFs across multiple systems, email archives, and shared drives. Takes hours before an inspection or monitoring visit.
+
+---
+
+
+---
+
+
+**Person D:**
+To wrap up, we’ve shown how a modern CTMS can bring together research and regulatory teams, automate compliance, and provide real-time visibility for all stakeholders. This is more than a tool—it’s a new way of working. We hope this story has illustrated the value of a unified, intuitive platform—and we look forward to your questions and feedback.
 
 ---
 

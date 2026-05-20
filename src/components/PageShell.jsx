@@ -67,7 +67,7 @@ export default function PageShell() {
           <div className="flex items-center gap-3 shrink-0">
             <span className="font-heading text-lg font-bold tracking-wide">MD Anderson</span>
             <span className="text-red-300 text-sm hidden sm:block">|</span>
-            <span className="text-sm text-red-100 hidden sm:block">Clinical Trials</span>
+            <span className="text-sm text-red-100 hidden sm:block">Oncology CTMS</span>
           </div>
 
           {/* Primary nav — persona-specific */}

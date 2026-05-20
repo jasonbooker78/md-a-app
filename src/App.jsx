@@ -1,5 +1,6 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { PersonaProvider } from './context/PersonaContext'
+import PersonaSelect from './screens/PersonaSelect'
 import PageShell from './components/PageShell'
 import WorkQueue from './screens/WorkQueue'
 import AmendmentDetail from './screens/AmendmentDetail'
@@ -13,8 +14,11 @@ export default function App() {
     <PersonaProvider>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<PageShell />}>
-            <Route index element={<Navigate to="/work-queue" replace />} />
+          {/* Entry page — no nav shell */}
+          <Route path="/" element={<PersonaSelect />} />
+
+          {/* App screens — with nav shell */}
+          <Route element={<PageShell />}>
             <Route path="work-queue" element={<WorkQueue />} />
             <Route path="amendment-detail" element={<AmendmentDetail />} />
             <Route path="visit-form" element={<VisitForm />} />

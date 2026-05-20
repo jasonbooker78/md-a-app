@@ -29,10 +29,10 @@
 
 | Screen | Key interactions | Done |
 |--------|-----------------|------|
-| 1 — Work Queue | Amendment banner → links to Screen 2; visit task list | [ ] |
-| 2 — Amendment Detail | Acknowledge button → toggles to timestamped confirmed state | [ ] |
-| 3 — Visit Form | Pre-populated lab/vital/med values with Epic source labels; "Log AE" button → Screen 4 | [ ] |
-| 4 — SAE Logging | Grade selector triggers SAE flag; auto-calculated deadline (`May 26, 2026`); submit → confirmation state | [ ] |
+| 1 — Work Queue | Amendment banner → links to Screen 2; visit task list | [x] |
+| 2 — Amendment Detail | Acknowledge button → toggles to timestamped confirmed state | [x] |
+| 3 — Visit Form | Pre-populated lab/vital/med values with Epic source labels; "Log AE" button → Screen 4 | [x] |
+| 4 — SAE Logging | Grade selector triggers SAE flag; auto-calculated deadline (`May 26, 2026`); submit → confirmation state | [x] |
 
 ---
 
@@ -40,8 +40,8 @@
 
 | Screen | Key interactions | Done |
 |--------|-----------------|------|
-| 5 — Compliance Dashboard | Acknowledgment tracker (Maria ✓, 1 pending + "Reminder queued"); SAE alert card → Screen 6 | [ ] |
-| 6 — Regulatory Timeline | Chronological event list; today's SAE highlighted; non-functional "Download Regulatory Binder" button | [ ] |
+| 5 — Compliance Dashboard | Acknowledgment tracker (Maria ✓, 1 pending + "Reminder queued"); SAE alert card → Screen 6 | [x] |
+| 6 — Regulatory Timeline | Chronological event list; today's SAE highlighted; non-functional "Download Regulatory Binder" button | [x] |
 
 ---
 

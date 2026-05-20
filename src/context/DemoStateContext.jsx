@@ -17,6 +17,10 @@ const defaultState = {
     eventDate: null,
     deadline: null,
   },
+  visit: {
+    labValues: null,   // null = use component defaults
+    medConfirms: null, // null = use component defaults
+  },
 }
 
 function loadState() {
@@ -61,13 +65,17 @@ export function DemoStateProvider({ children }) {
     })
   }
 
+  function saveVisit({ labValues, medConfirms }) {
+    update({ visit: { labValues, medConfirms } })
+  }
+
   function resetDemo() {
     saveState(defaultState)
     setState(defaultState)
   }
 
   return (
-    <DemoStateContext.Provider value={{ ...state, acknowledgeAmendment, logSAE, resetDemo }}>
+    <DemoStateContext.Provider value={{ ...state, acknowledgeAmendment, logSAE, saveVisit, resetDemo }}>
       {children}
     </DemoStateContext.Provider>
   )

@@ -16,7 +16,6 @@ function PersonaPicker({ onClose }) {
 
   function handleReset() {
     resetDemo()
-    navigate('/')
     onClose()
   }
 

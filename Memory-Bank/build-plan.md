@@ -46,10 +46,11 @@
 ---
 
 ## Phase 5 — Polish
-- [ ] Verify visual hierarchy (SAE = red/urgent, amendment = orange/monitoring)
-- [ ] Accessibility contrast check (WCAG AA minimum)
-- [ ] Demo flow link-through: every CTA navigates correctly for the scripted walkthrough
-- [ ] Responsive check at 1280px+ (demo likely on a laptop)
+- [x] Verify visual hierarchy (SAE = red/urgent, amendment = orange/monitoring)
+- [x] Accessibility: `role="alert"` on SAE banners, `aria-label` on persona nav sections, `role="banner"` on header
+- [x] Demo flow link-through: every CTA navigates correctly for the scripted walkthrough
+- [x] Page title updated to "MD Anderson · CTMS Prototype"
+- [x] Bug fix: SAE deadline timezone offset corrected (May 26, 2026 ✓)
 
 ---
 

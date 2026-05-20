@@ -30,7 +30,11 @@ export default function Banner({ variant = 'amendment', title, body, action, onA
   const s = styles[variant]
 
   return (
-    <div className={`${s.wrapper} rounded-r-lg px-5 py-4 flex items-start justify-between gap-4`}>
+    <div
+      className={`${s.wrapper} rounded-r-lg px-5 py-4 flex items-start justify-between gap-4`}
+      role={variant === 'sae' ? 'alert' : 'status'}
+      aria-live={variant === 'sae' ? 'assertive' : 'polite'}
+    >
       <div className="flex items-start gap-3">
         <span className="text-xl mt-0.5" aria-hidden="true">{s.icon}</span>
         <div>

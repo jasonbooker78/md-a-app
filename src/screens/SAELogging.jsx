@@ -5,8 +5,8 @@ import Button from '../components/Button'
 import Banner from '../components/Banner'
 
 function addDays(dateStr, days) {
-  const d = new Date(dateStr)
-  d.setDate(d.getDate() + days)
+  const [year, month, day] = dateStr.split('-').map(Number)
+  const d = new Date(year, month - 1, day + days)
   return d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
 }
 

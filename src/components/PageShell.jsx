@@ -16,7 +16,7 @@ export default function PageShell() {
   return (
     <div className="min-h-screen flex flex-col bg-mda-gray-50">
       {/* Top Nav */}
-      <header className="bg-mda-red text-white shadow-md">
+      <header className="bg-mda-red text-white shadow-md" role="banner">
         <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <span className="font-heading text-xl font-bold tracking-wide">MD Anderson</span>
@@ -29,7 +29,7 @@ export default function PageShell() {
         {/* Persona nav strips */}
         <div className="border-t border-red-800 bg-mda-red-dark">
           <div className="max-w-7xl mx-auto px-6 flex items-stretch gap-8">
-            <span className="text-xs text-red-300 uppercase tracking-widest self-center mr-2">CRC — Maria</span>
+            <span className="text-xs text-red-300 uppercase tracking-widest self-center mr-2" aria-label="CRC persona: Maria">CRC — Maria</span>
             {crcLinks.map(({ to, label }) => (
               <NavLink
                 key={to}
@@ -46,7 +46,7 @@ export default function PageShell() {
               </NavLink>
             ))}
             <span className="text-red-700 self-center mx-2">|</span>
-            <span className="text-xs text-red-300 uppercase tracking-widest self-center mr-2">IRB Admin — David</span>
+            <span className="text-xs text-red-300 uppercase tracking-widest self-center mr-2" aria-label="IRB Admin persona: David">IRB Admin — David</span>
             {irbLinks.map(({ to, label }) => (
               <NavLink
                 key={to}

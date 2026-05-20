@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import Card from '../components/Card'
 import Button from '../components/Button'
 import SourceLabel from '../components/SourceLabel'
+import { useDemoState } from '../context/DemoStateContext'
 
 const epicTimestamp = 'May 19, 2026 · 6:14 AM'
 
@@ -30,11 +31,30 @@ const meds = [
 
 export default function VisitForm() {
   const navigate = useNavigate()
-  const [labValues, setLabValues] = useState(labs.map(l => ({ ...l, editing: false })))
-  const [medConfirms, setMedConfirms] = useState(meds.map(m => m.confirmed))
+  const { visit, saveVisit } = useDemoState()
+  const [labValues, setLabValues] = useState(
+    visit.labValues ?? labs.map(l => ({ ...l, editing: false }))
+  )
+  const [medConfirms, setMedConfirms] = useState(
+    visit.medConfirms ?? meds.map(m => m.confirmed)
+  )
 
   function toggleEdit(i) {
     setLabValues(prev => prev.map((l, idx) => idx === i ? { ...l, editing: !l.editing } : l))
+  }
+
+  function handleLabSave(i, newValue) {
+    const updated = labValues.map((l, idx) =>
+      idx === i ? { ...l, value: newValue, editing: false } : l
+    )
+    setLabValues(updated)
+    saveVisit({ labValues: updated, medConfirms })
+  }
+
+  function handleMedToggle(i) {
+    const updated = medConfirms.map((v, idx) => idx === i ? !v : v)
+    setMedConfirms(updated)
+    saveVisit({ labValues, medConfirms: updated })
   }
 
   return (
@@ -89,7 +109,7 @@ export default function VisitForm() {
                       className="border border-mda-blue rounded px-2 py-0.5 w-20 text-sm"
                       defaultValue={lab.value}
                       autoFocus
-                      onBlur={() => toggleEdit(i)}
+                      onBlur={(e) => handleLabSave(i, e.target.value)}
                     />
                   ) : (
                     <span>{lab.value} <span className="text-mda-gray-400">{lab.unit}</span></span>
@@ -136,7 +156,7 @@ export default function VisitForm() {
               <input
                 type="checkbox"
                 checked={medConfirms[i]}
-                onChange={() => setMedConfirms(prev => prev.map((v, idx) => idx === i ? !v : v))}
+                onChange={() => handleMedToggle(i)}
                 className="w-4 h-4 accent-mda-red"
               />
               <div>

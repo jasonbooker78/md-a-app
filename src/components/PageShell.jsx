@@ -1,14 +1,21 @@
 import { useState, useRef, useEffect } from 'react'
 import { NavLink, Outlet, useNavigate } from 'react-router-dom'
 import { usePersona, personas } from '../context/PersonaContext'
+import { useDemoState } from '../context/DemoStateContext'
 
 function PersonaPicker({ onClose }) {
   const { personaId, setPersonaId } = usePersona()
+  const { resetDemo } = useDemoState()
   const navigate = useNavigate()
 
   function switchTo(id) {
     setPersonaId(id)
     navigate(personas[id].home)
+    onClose()
+  }
+
+  function handleReset() {
+    resetDemo()
     onClose()
   }
 
@@ -37,6 +44,14 @@ function PersonaPicker({ onClose }) {
           )}
         </button>
       ))}
+      <div className="border-t border-mda-gray-100 px-4 py-3">
+        <button
+          onClick={handleReset}
+          className="w-full text-left text-xs text-mda-gray-400 hover:text-mda-red transition-colors"
+        >
+          ↺ Reset demo state
+        </button>
+      </div>
     </div>
   )
 }

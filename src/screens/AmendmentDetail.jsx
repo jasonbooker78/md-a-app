@@ -1,21 +1,21 @@
-import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Card from '../components/Card'
 import Button from '../components/Button'
+import { useDemoState } from '../context/DemoStateContext'
+import { usePersona, personas } from '../context/PersonaContext'
 
 export default function AmendmentDetail() {
   const navigate = useNavigate()
-  const [acknowledged, setAcknowledged] = useState(false)
-  const [ackTime, setAckTime] = useState(null)
+  const { amendment, acknowledgeAmendment } = useDemoState()
+  const { personaId } = usePersona()
+  const persona = personas[personaId]
 
   function handleAcknowledge() {
-    const now = new Date()
-    const ts = now.toLocaleString('en-US', {
+    const ts = new Date().toLocaleString('en-US', {
       month: 'short', day: 'numeric', year: 'numeric',
-      hour: 'numeric', minute: '2-digit', hour12: true
+      hour: 'numeric', minute: '2-digit', hour12: true,
     })
-    setAckTime(ts)
-    setAcknowledged(true)
+    acknowledgeAmendment(persona.name, ts)
   }
 
   return (
@@ -78,13 +78,13 @@ export default function AmendmentDetail() {
 
       {/* Acknowledge action */}
       <Card accent="none" className="p-6">
-        {acknowledged ? (
+        {amendment.acknowledged ? (
           <div className="flex items-center gap-3">
             <span className="text-2xl">✓</span>
             <div>
               <p className="font-semibold text-green-700">Acknowledged</p>
               <p className="text-xs text-mda-gray-400 mt-0.5">
-                Maria R. · {ackTime} · IRB Admin has been notified
+                {amendment.acknowledgedBy} · {amendment.acknowledgedAt} · IRB Admin has been notified
               </p>
             </div>
           </div>

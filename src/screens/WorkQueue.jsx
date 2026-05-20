@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom'
 import Banner from '../components/Banner'
 import Card from '../components/Card'
 import Button from '../components/Button'
+import { useDemoState } from '../context/DemoStateContext'
 
 const visits = [
   { patient: 'R.C.', subjectId: 'THN-204-012', protocol: 'THN-204', visit: 'Cycle 2 Day 1', time: '8:30 AM', room: 'Clinic B' },
@@ -12,6 +13,7 @@ const visits = [
 
 export default function WorkQueue() {
   const navigate = useNavigate()
+  const { amendment } = useDemoState()
 
   return (
     <div className="space-y-6">
@@ -21,14 +23,22 @@ export default function WorkQueue() {
         <p className="text-mda-gray-600 text-sm mt-1">Tuesday, May 19, 2026 · 4 visits scheduled today</p>
       </div>
 
-      {/* Amendment banner — highest priority */}
-      <Banner
-        variant="amendment"
-        title="Protocol THN-204 amended — Acknowledgment required"
-        body="ICF updated from v1.2 → v1.3. All assigned coordinators must acknowledge before enrolling new patients."
-        action="Review & Acknowledge"
-        onAction={() => navigate('/amendment-detail')}
-      />
+      {/* Amendment banner — hidden once acknowledged */}
+      {!amendment.acknowledged && (
+        <Banner
+          variant="amendment"
+          title="Protocol THN-204 amended — Acknowledgment required"
+          body="ICF updated from v1.2 → v1.3. All assigned coordinators must acknowledge before enrolling new patients."
+          action="Review & Acknowledge"
+          onAction={() => navigate('/amendment-detail')}
+        />
+      )}
+      {amendment.acknowledged && (
+        <div className="flex items-center gap-2 text-sm text-green-700 bg-green-50 border border-green-200 rounded-lg px-4 py-3">
+          <span>✓</span>
+          <span>Amendment 3 acknowledged by {amendment.acknowledgedBy} · {amendment.acknowledgedAt}</span>
+        </div>
+      )}
 
       {/* Query indicator */}
       <div className="flex items-center gap-3 text-sm">

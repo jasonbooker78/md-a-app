@@ -80,7 +80,7 @@ export default function PageShell() {
 
           {/* Brand */}
           <div className="flex items-center gap-3 shrink-0">
-            <span className="font-heading text-lg font-bold tracking-wide">MD Anderson</span>
+            <NavLink to="/" className="font-heading text-lg tracking-wide hover:text-red-200 transition-colors">MD Anderson</NavLink>
             <span className="text-red-300 text-sm hidden sm:block">|</span>
             <span className="text-sm text-red-100 hidden sm:block">Oncology CTMS</span>
           </div>

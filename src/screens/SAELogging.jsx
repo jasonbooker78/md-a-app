@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom'
 import Card from '../components/Card'
 import Button from '../components/Button'
 import Banner from '../components/Banner'
+import { useDemoState } from '../context/DemoStateContext'
+import { usePersona, personas } from '../context/PersonaContext'
 
 function addDays(dateStr, days) {
   const [year, month, day] = dateStr.split('-').map(Number)
@@ -12,6 +14,9 @@ function addDays(dateStr, days) {
 
 export default function SAELogging() {
   const navigate = useNavigate()
+  const { logSAE } = useDemoState()
+  const { personaId } = usePersona()
+  const persona = personas[personaId]
   const [eventDate, setEventDate] = useState('2026-05-19')
   const [grade, setGrade] = useState('')
   const [relatedness, setRelatedness] = useState('')
@@ -22,6 +27,8 @@ export default function SAELogging() {
 
   function handleSubmit(e) {
     e.preventDefault()
+    const loggedAt = new Date().toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })
+    logSAE({ loggedBy: persona.name, loggedAt, grade, relatedness, eventDate, deadline })
     setSubmitted(true)
   }
 

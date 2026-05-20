@@ -2,21 +2,9 @@ import { useNavigate } from 'react-router-dom'
 import Card from '../components/Card'
 import Button from '../components/Button'
 import TimelineEntry from '../components/TimelineEntry'
+import { useDemoState } from '../context/DemoStateContext'
 
-const events = [
-  {
-    type: 'sae',
-    date: 'May 19, 2026 · 9:18 AM',
-    actor: 'Maria R.',
-    description: 'Grade 3 adverse event logged for R.C. (THN-204-012) — Cycle 2 Day 1. Relatedness: Possibly related. FDA 7-day report due May 26, 2026.',
-    isHighlighted: true,
-  },
-  {
-    type: 'amendment',
-    date: 'May 19, 2026 · 8:47 AM',
-    actor: 'Maria R.',
-    description: 'Amendment 3 acknowledged — ICF v1.3 reviewed and confirmed.',
-  },
+const staticEvents = [
   {
     type: 'amendment',
     date: 'May 16, 2026',
@@ -63,6 +51,25 @@ const events = [
 
 export default function RegulatoryTimeline() {
   const navigate = useNavigate()
+  const { amendment, sae } = useDemoState()
+
+  // Build events list dynamically based on what Maria has done
+  const events = [
+    ...(sae.logged ? [{
+      type: 'sae',
+      date: `May 19, 2026 · ${sae.loggedAt}`,
+      actor: sae.loggedBy,
+      description: `Grade ${sae.grade} adverse event logged for R.C. (THN-204-012) — Cycle 2 Day 1. Relatedness: ${sae.relatedness}. FDA 7-day report due ${sae.deadline}.`,
+      isHighlighted: true,
+    }] : []),
+    ...(amendment.acknowledged ? [{
+      type: 'amendment',
+      date: amendment.acknowledgedAt,
+      actor: amendment.acknowledgedBy,
+      description: 'Amendment 3 acknowledged — ICF v1.3 reviewed and confirmed.',
+    }] : []),
+    ...staticEvents,
+  ]
 
   return (
     <div className="space-y-6 max-w-3xl">

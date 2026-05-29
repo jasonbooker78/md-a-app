@@ -15,7 +15,7 @@ function addDays(dateStr, days) {
 export default function SAELogging() {
   const navigate = useNavigate()
   const { logSAE } = useDemoState()
-  const { personaId } = usePersona()
+  const { personaId, setPersonaId } = usePersona()
   const persona = personas[personaId]
   const [eventDate, setEventDate] = useState('2026-05-19')
   const [grade, setGrade] = useState('')
@@ -49,7 +49,7 @@ export default function SAELogging() {
             <p className="text-xl font-bold text-mda-red">{deadline}</p>
           </div>
           <p className="text-xs text-mda-gray-400">David M. (Regulatory Analyst) has been notified · {new Date().toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })}</p>
-          <Button onClick={() => navigate('/compliance-dashboard')}>View Compliance Dashboard →</Button>
+          <Button onClick={() => { setPersonaId('irb'); navigate('/compliance-dashboard') }}>View Compliance Dashboard →</Button>
         </Card>
       </div>
     )

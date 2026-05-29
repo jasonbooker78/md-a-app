@@ -15,7 +15,7 @@ const staticEvents = [
     type: 'consent',
     date: 'Apr 4, 2026',
     actor: 'Maria R.',
-    description: 'Patient R.C. (THN-204-012) re-consented using ICF v1.2 following Amendment 2.',
+    description: 'Patient R.C. (2025-0004-012) re-consented using ICF v1.2 following Amendment 2.',
   },
   {
     type: 'amendment',
@@ -27,13 +27,13 @@ const staticEvents = [
     type: 'consent',
     date: 'Feb 12, 2026',
     actor: 'Maria R.',
-    description: 'Patient M.T. (THN-204-008) enrolled and consented using ICF v1.1.',
+    description: 'Patient M.T. (2025-0004-008) enrolled and consented using ICF v1.1.',
   },
   {
     type: 'consent',
     date: 'Jan 30, 2026',
     actor: 'Maria R.',
-    description: 'Patient R.C. (THN-204-012) enrolled and consented using ICF v1.1.',
+    description: 'Patient R.C. (2025-0004-012) enrolled and consented using ICF v1.1.',
   },
   {
     type: 'icf',
@@ -45,7 +45,7 @@ const staticEvents = [
     type: 'activation',
     date: 'Dec 3, 2025',
     actor: 'System',
-    description: 'Protocol THN-204 activated. Site initiation visit complete. ICF v1.0 approved.',
+    description: 'Protocol 2025-0004 activated. Site initiation visit complete. ICF v1.0 approved.',
   },
 ]
 
@@ -59,7 +59,7 @@ export default function RegulatoryTimeline() {
       type: 'sae',
       date: `May 19, 2026 · ${sae.loggedAt}`,
       actor: sae.loggedBy,
-      description: `Grade ${sae.grade} adverse event logged for R.C. (THN-204-012) — Cycle 2 Day 1. Relatedness: ${sae.relatedness}. FDA 7-day report due ${sae.deadline}.`,
+      description: `Grade ${sae.grade} adverse event logged for R.C. (2025-0004-012) — Cycle 2 Day 1. Relatedness: ${sae.relatedness}. FDA 7-day report due ${sae.deadline}.`,
       isHighlighted: true,
     }] : []),
     ...(amendment.acknowledged ? [{
@@ -85,7 +85,7 @@ export default function RegulatoryTimeline() {
       <div className="flex items-start justify-between">
         <div>
           <h1 className="text-2xl font-heading text-mda-gray-800">Regulatory Timeline</h1>
-          <p className="text-mda-gray-600 text-sm mt-1">Protocol THN-204 · Complete history · {events.length} events</p>
+          <p className="text-mda-gray-600 text-sm mt-1">Protocol 2025-0004 · Complete history · {events.length} events</p>
         </div>
         <Button
           variant="ghost"
@@ -129,7 +129,7 @@ export default function RegulatoryTimeline() {
           <div className="flex flex-col items-center w-3">
             <div className="w-3 h-3 rounded-full bg-mda-gray-200" />
           </div>
-          <p className="text-xs text-mda-gray-400 pb-1">Protocol THN-204 initiated Dec 3, 2025</p>
+          <p className="text-xs text-mda-gray-400 pb-1">Protocol 2025-0004 initiated Dec 3, 2025</p>
         </div>
       </Card>
     </div>

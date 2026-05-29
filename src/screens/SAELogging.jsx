@@ -42,14 +42,14 @@ export default function SAELogging() {
           <div className="text-4xl">⚠️</div>
           <h2 className="text-xl font-heading font-semibold text-mda-gray-800">SAE Logged Successfully</h2>
           <p className="text-sm text-mda-gray-600">
-            Grade {grade} adverse event recorded for R.C. · Protocol THN-204
+            Grade {grade} adverse event recorded for R.C. · Protocol 2025-0004
           </p>
           <div className="bg-red-50 border border-red-200 rounded-lg px-5 py-4 inline-block mx-auto">
             <p className="text-xs uppercase tracking-wide text-mda-gray-400 mb-1">7-Day Expedited Report Due</p>
             <p className="text-xl font-bold text-mda-red">{deadline}</p>
           </div>
-          <p className="text-xs text-mda-gray-400">David M. (IRB Admin) has been notified · {new Date().toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })}</p>
-          <Button onClick={() => navigate('/compliance-dashboard')}>View IRB Admin Dashboard →</Button>
+          <p className="text-xs text-mda-gray-400">David M. (Regulatory Analyst) has been notified · {new Date().toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })}</p>
+          <Button onClick={() => navigate('/compliance-dashboard')}>View Compliance Dashboard →</Button>
         </Card>
       </div>
     )
@@ -64,7 +64,7 @@ export default function SAELogging() {
 
       <div>
         <h1 className="text-2xl font-heading text-mda-gray-800">Log Adverse Event</h1>
-        <p className="text-mda-gray-600 text-sm mt-1">R.C. · Subject ID THN-204-012 · Protocol THN-204</p>
+        <p className="text-mda-gray-600 text-sm mt-1">R.C. · Subject ID 2025-0004-012 · Protocol 2025-0004</p>
       </div>
 
       {/* SAE flag banner — shown when Grade ≥ 3 */}

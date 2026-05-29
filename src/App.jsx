@@ -9,6 +9,8 @@ import VisitForm from './screens/VisitForm'
 import SAELogging from './screens/SAELogging'
 import ComplianceDashboard from './screens/ComplianceDashboard'
 import RegulatoryTimeline from './screens/RegulatoryTimeline'
+import FacultyDashboard from './screens/FacultyDashboard'
+import GrantManagement from './screens/GrantManagement'
 
 export default function App() {
   return (
@@ -24,6 +26,8 @@ export default function App() {
               <Route path="sae-logging" element={<SAELogging />} />
               <Route path="compliance-dashboard" element={<ComplianceDashboard />} />
               <Route path="regulatory-timeline" element={<RegulatoryTimeline />} />
+              <Route path="faculty-dashboard" element={<FacultyDashboard />} />
+              <Route path="grant-management" element={<GrantManagement />} />
             </Route>
           </Routes>
         </BrowserRouter>

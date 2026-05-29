@@ -1,5 +1,4 @@
 import { createContext, useContext, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 
 export const PersonaContext = createContext()
 
@@ -16,12 +15,13 @@ export const personas = {
       { label: 'Protocols', to: null },
       { label: 'Patients', to: null },
       { label: 'Queries', to: null, badge: '2' },
+      { label: 'Grant Management', to: '/grant-management', section: true },
     ],
   },
   irb: {
     id: 'irb',
     name: 'David M.',
-    role: 'IRB Administrator',
+    role: 'Regulatory Analyst',
     initials: 'DM',
     home: '/compliance-dashboard',
     avatarColor: 'bg-mda-purple',
@@ -30,6 +30,20 @@ export const personas = {
       { label: 'Protocols', to: null },
       { label: 'Reports', to: null },
       { label: 'SAEs', to: null },
+      { label: 'Grant Management', to: '/grant-management', section: true },
+    ],
+  },
+  pi: {
+    id: 'pi',
+    name: 'Dr. K.',
+    role: 'Principal Investigator',
+    initials: 'DK',
+    home: '/faculty-dashboard',
+    avatarColor: 'bg-emerald-700',
+    nav: [
+      { label: 'Protocol Performance', to: '/faculty-dashboard' },
+      { label: 'Protocols', to: null },
+      { label: 'Grant Management', to: '/grant-management', section: true },
     ],
   },
 }

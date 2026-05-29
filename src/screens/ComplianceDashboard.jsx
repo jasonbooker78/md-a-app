@@ -26,21 +26,20 @@ export default function ComplianceDashboard() {
   const acknowledgedCount = coordinators.filter(c => c.status === 'acknowledged').length
   const pendingCount = coordinators.filter(c => c.status === 'pending').length
 
-  // Compute how long ago the SAE was logged for the banner copy
   const saeTimeAgo = sae.loggedAt ? `logged at ${sae.loggedAt} by ${sae.loggedBy}` : ''
 
   return (
     <div className="space-y-6">
       <div>
         <h1 className="text-2xl font-heading text-mda-gray-800">Compliance Dashboard</h1>
-        <p className="text-mda-gray-600 text-sm mt-1">Tuesday, May 19, 2026 · IRB Admin — David M.</p>
+        <p className="text-mda-gray-600 text-sm mt-1">Tuesday, May 19, 2026 · Regulatory Analyst — David M.</p>
       </div>
 
       {/* SAE Alert — only shown after Maria logs one */}
       {sae.logged && (
         <Banner
           variant="sae"
-          title={`New SAE · THN-204 · ${saeTimeAgo}`}
+          title={`New SAE · 2025-0004 · ${saeTimeAgo}`}
           body={`Grade ${sae.grade} adverse event — FDA 7-day expedited report due ${sae.deadline}.`}
           action="View Details"
           onAction={() => navigate('/regulatory-timeline')}
@@ -57,7 +56,7 @@ export default function ComplianceDashboard() {
         <Card accent="none" className="px-5 py-4">
           <p className="text-xs uppercase tracking-wide text-mda-gray-400 mb-1">Acknowledged</p>
           <p className="text-3xl font-bold text-green-600">{acknowledgedCount}</p>
-          <p className="text-xs text-mda-gray-400 mt-1">Amendment 3 · THN-204</p>
+          <p className="text-xs text-mda-gray-400 mt-1">Amendment 3 · 2025-0004</p>
         </Card>
         <Card accent={sae.logged ? 'red' : 'none'} className="px-5 py-4">
           <p className="text-xs uppercase tracking-wide text-mda-gray-400 mb-1">Open SAEs</p>
@@ -75,7 +74,7 @@ export default function ComplianceDashboard() {
         <div className="px-5 py-4 border-b border-mda-gray-100 flex items-center justify-between">
           <div>
             <h2 className="text-sm font-semibold text-mda-gray-800">Amendment 3 Acknowledgment Tracker</h2>
-            <p className="text-xs text-mda-gray-400 mt-0.5">Protocol THN-204 · ICF v1.2 → v1.3 · Effective May 19, 2026</p>
+            <p className="text-xs text-mda-gray-400 mt-0.5">Protocol 2025-0004 · ICF v1.2 → v1.3 · Effective May 19, 2026</p>
           </div>
           <span className="text-xs text-mda-orange font-semibold">{acknowledgedCount}/{coordinators.length} complete</span>
         </div>
@@ -117,10 +116,10 @@ export default function ComplianceDashboard() {
           <div className="px-5 py-4 flex items-center justify-between">
             <div className="space-y-1">
               <p className="text-sm font-semibold text-mda-gray-800">
-                Grade {sae.grade} Adverse Event · R.C. (THN-204-012)
+                Grade {sae.grade} Adverse Event · R.C. (2025-0004-012)
               </p>
               <p className="text-xs text-mda-gray-600">
-                Protocol THN-204 · Logged by {sae.loggedBy} · {sae.loggedAt}
+                Protocol 2025-0004 · Logged by {sae.loggedBy} · {sae.loggedAt}
               </p>
               <p className="text-xs text-mda-gray-400">
                 Relatedness: {sae.relatedness} · Cycle 2 Day 1 visit

@@ -1,12 +1,16 @@
 import { createContext, useContext, useState } from 'react'
 
-const STORAGE_KEY = 'ctms-demo-state'
+const STORAGE_KEY = 'workflow-tracker-demo-state'
 
 const defaultState = {
   amendment: {
     acknowledged: false,
     acknowledgedBy: null,
     acknowledgedAt: null,
+  },
+  reconsentTask: {
+    generated: false,
+    dueDate: null,
   },
   sae: {
     logged: false,
@@ -18,8 +22,8 @@ const defaultState = {
     deadline: null,
   },
   visit: {
-    labValues: null,   // null = use component defaults
-    medConfirms: null, // null = use component defaults
+    labValues: null,
+    medConfirms: null,
   },
 }
 
@@ -56,6 +60,7 @@ export function DemoStateProvider({ children }) {
   function acknowledgeAmendment(personaName, timestamp) {
     update({
       amendment: { acknowledged: true, acknowledgedBy: personaName, acknowledgedAt: timestamp },
+      reconsentTask: { generated: true, dueDate: 'May 26, 2026' },
     })
   }
 
